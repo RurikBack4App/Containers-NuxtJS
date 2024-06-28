@@ -1,21 +1,22 @@
-# Use a imagem base do Node.js
+# Use the Node.js base image
 FROM node:20
 
-# Definir o diretório de trabalho dentro do container
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copiar package.json e package-lock.json para o diretório de trabalh
+# Copy package.json and package-lock.json to the working directory
 COPY . /app
-# Instalar as dependências
+
+# Install dependencies
 RUN npm install
 
-# Copiar o restante do código para o diretório de trabalho
+# Copy the rest of the code to the working directory
 
-# Construir o projeto Nuxt.js
+# Build the Nuxt.js project
 RUN npm run build
 
-# Expor a porta que o Nuxt.js usará
+# Expose the port that Nuxt.js will use
 EXPOSE 3000
 
-# Comando para iniciar a aplicação
+# Command to start the application
 CMD ["npm", "start"]
